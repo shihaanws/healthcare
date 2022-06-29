@@ -80,10 +80,10 @@ export default function Album() {
                             spacing={2}
                             justifyContent="center"
                         >
-                            <Button onClick={() => navigate("#")}
+                            <Button onClick={() => navigate("/makeappointment")}
                                 color="success" variant="contained">Make Appoinment</Button>
-                            <Button onClick={() => navigate("#")} color="error" variant="contained">Write Description</Button>
-                            <Button color="secondary" variant="contained">Report Request</Button>
+                            <Button onClick={() => navigate("/writedescription")} color="error" variant="contained">Write Description</Button>
+                            <Button onClick={() => navigate("/doctorreportrequest")} color="secondary" variant="contained">Report Request</Button>
 
                         </Stack>
                     </Container>

@@ -58,13 +58,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-function createData(name, calories, fat, carbs, protein, a, b) {
-    return { name, calories, fat, carbs, protein, a, b };
+function createData(name, email, gender, doctortype, age, appoinmentdate, doctor, status) {
+    return { name, email, gender, doctortype, age, appoinmentdate, doctor, status };
 }
 const rows = [
-    createData('Sai', "sai@mail.com", "Male", "Paedia", 48, "1/8/2022", "Dr.Ramesh"),
-    createData('Hany', "hany@mail.com", "Female", "Neuro", 29, "8/5/2022", "Dr.Sharan"),
-    createData('Gokul', "gokul.f@mail.com", "male", "Cardio", 36, "7/7/2022", "Dr.Saikumar"),
+    createData('Sai', "sai@mail.com", "Male", "Paedia", 48, "1/8/2022", "Dr.Ramesh", <Button variant="contained" color="secondary" >Forward</Button>),
+    // createData('Hany', "hany@mail.com", "Female", "Neuro", 29, "8/5/2022", "Dr.Sharan", <Button variant="contained" color="secondary" >Forward</Button>),
+    // createData('Gokul', "gokul.f@mail.com", "male", "Cardio", 36, "7/7/2022", "Dr.Saikumar", <Button variant="contained" color="secondary" >Forward</Button>),
+
 ];
 
 const theme = createTheme();
@@ -116,6 +117,8 @@ export default function Album() {
                                         <StyledTableCell align="left">Age</StyledTableCell>
                                         <StyledTableCell align="left">Appoinment Date</StyledTableCell>
                                         <StyledTableCell align="left">Doctor</StyledTableCell>
+                                        <StyledTableCell align="left">Status</StyledTableCell>
+
 
                                     </TableRow>
                                 </TableHead>
@@ -125,22 +128,19 @@ export default function Album() {
                                             <StyledTableCell component="th" scope="row">
                                                 {row.name}
                                             </StyledTableCell>
-                                            <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                                            <StyledTableCell align="left">{row.fat}</StyledTableCell>
-                                            <StyledTableCell align="left">{row.carbs}</StyledTableCell>
-                                            <StyledTableCell align="left">{row.protein}</StyledTableCell>
-                                            <StyledTableCell align="left">{row.a}</StyledTableCell>
-                                            <StyledTableCell align="left">{row.b}</StyledTableCell>
+                                            <StyledTableCell align="left">{row.email}</StyledTableCell>
+                                            <StyledTableCell align="left">{row.gender}</StyledTableCell>
+                                            <StyledTableCell align="left">{row.doctortype}</StyledTableCell>
+                                            <StyledTableCell align="left">{row.age}</StyledTableCell>
+                                            <StyledTableCell align="left">{row.appoinmentdate}</StyledTableCell>
+                                            <StyledTableCell align="left">{row.doctor}</StyledTableCell>
+                                            <StyledTableCell align="left">{row.status}</StyledTableCell>
+
                                         </StyledTableRow>
                                     ))}
                                 </TableBody>
                             </Table>
                         </TableContainer>
-
-                        <Button type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }} > Forward Appoinment</Button>
 
 
                     </Container>

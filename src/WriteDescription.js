@@ -7,7 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -50,21 +50,28 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
         border: 0,
     },
 }));
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-function createData(name, email, gender, Doctortype, age, Date, Disease, Description) {
-    return { name, email, gender, Doctortype, age, Date, Disease, Description };
+function createData(name, id, gender, age, Date, Description, patientreportrequest) {
+    return { name, id, gender, age, Date, Description, patientreportrequest };
 }
 const rows = [
-    createData('Sai', "sai@mail.com", "Male", "Paedia", 48, "1/8/2022", "fever", "dolo650"),
-    // createData('Hany', "hany@mail.com", "Female", "Neuro", 29, "8/5/2022", "regular checkup", "xray"),
-    // createData('Gokul', "gokul.f@mail.com", "male", "Cardio", 36, "7/7/2022", "checkup", "scan"),
+    createData('Sai', "P1234", "Male", 48, "1/8/2022",
+        <div>
+            <input />
+            <button  >Save</button>
+        </div>,
+        <select >
+            <option value="mri">MRI</option>
+            <option value="ct">CT</option>
+            <option value="bloodtest">Bloodtest</option>
+        </select>
+    ),
 
 ];
 
 const theme = createTheme();
 
 export default function Album() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     return (
         <ThemeProvider theme={theme}>
@@ -95,50 +102,42 @@ export default function Album() {
                             color="text.primary"
                             gutterBottom
                         >
-                            Doctor Description
+                            Write Description
                         </Typography>
-
-
                         <TableContainer component={Paper}>
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                 <TableHead>
                                     <TableRow>
                                         <StyledTableCell>Patient Name</StyledTableCell>
-                                        <StyledTableCell align="left">Patient Email</StyledTableCell>
+                                        <StyledTableCell align="left">ID</StyledTableCell>
+
                                         <StyledTableCell align="left">Gender</StyledTableCell>
-                                        <StyledTableCell align="left">Doctor Type</StyledTableCell>
                                         <StyledTableCell align="left">Age</StyledTableCell>
                                         <StyledTableCell align="left">Date</StyledTableCell>
-                                        <StyledTableCell align="left">Doctor</StyledTableCell>
-                                        <StyledTableCell align="left">Sickness</StyledTableCell>
                                         <StyledTableCell align="left">Description</StyledTableCell>
-
+                                        <StyledTableCell align="left">Report Request</StyledTableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {rows.map((row) => (
                                         <StyledTableRow key={row.name}>
-                                            <StyledTableCell component="th" scope="row">
-                                                {row.name}
-                                            </StyledTableCell>
                                             <StyledTableCell align="left">{row.name}</StyledTableCell>
-                                            <StyledTableCell align="left">{row.email}</StyledTableCell>
+                                            <StyledTableCell align="left">{row.id}</StyledTableCell>
                                             <StyledTableCell align="left">{row.gender}</StyledTableCell>
-                                            <StyledTableCell align="left">{row.Doctortype}</StyledTableCell>
                                             <StyledTableCell align="left">{row.age}</StyledTableCell>
                                             <StyledTableCell align="left">{row.Date}</StyledTableCell>
-                                            <StyledTableCell align="left">{row.Disease}</StyledTableCell>
-                                            <StyledTableCell align="left"><input/><button>Save</button></StyledTableCell>
+                                            <StyledTableCell align="left">{row.Description}</StyledTableCell>
+                                            <StyledTableCell align="left">{row.patientreportrequest}</StyledTableCell>
                                         </StyledTableRow>
                                     ))}
                                 </TableBody>
                             </Table>
                         </TableContainer>
 
-                        {/* <Button type="submit"
+                        <Button type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 3, mb: 2 }} > Forward Appoinment</Button> */}
+                            sx={{ mt: 3, mb: 2 }} > Send</Button>
 
 
                     </Container>
@@ -146,17 +145,7 @@ export default function Album() {
             </main>
             {/* Footer */}
             <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-                {/* <Typography variant="h6" align="center" gutterBottom>
-                    Footer
-                </Typography> */}
-                {/* <Typography
-                    variant="subtitle1"
-                    align="center"
-                    color="text.secondary"
-                    component="p"
-                >
-                    Something here to give the footer a purpose!
-                </Typography> */}
+               
                 <Copyright />
             </Box>
             {/* End footer */}
