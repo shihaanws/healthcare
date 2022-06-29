@@ -105,7 +105,7 @@ export default function SignInSide() {
                                 required
                                 fullWidth
                                 id="email"
-                                label="Username"
+                                label="User ID"
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
@@ -148,6 +148,11 @@ export default function SignInSide() {
                                         navigate("/patientdashboard")
                                     } else if (role == "doctor") {
                                         navigate("/doctordashboard")
+                                    } else if (role == "management") {
+                                        navigate("/managementdashboard")
+                                    }
+                                    else if (role == "technician") {
+                                        navigate("/techniciandashboard")
                                     }
                                 }
                                 }
@@ -166,7 +171,7 @@ export default function SignInSide() {
                                 </Grid>
                                 <Grid item>
                                     <Link href="/signup" variant="body2">
-                                        {"Don't have an account? Sign Up"}
+                                        {"New Patient? Register?"}
                                     </Link>
                                 </Grid>
                             </Grid>

@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
@@ -7,7 +8,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -47,28 +48,42 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
         border: 0,
     },
 }));
-function createData(name, id, gender, age, Date, Description, patientreportrequest) {
-    return { name, id, gender, age, Date, Description, patientreportrequest };
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+function createData(name, id, gender, age, Date, action) {
+    return { name, id, gender, age, Date, action };
 }
 const rows = [
     createData('Sai', "P1234", "Male", 48, "1/8/2022",
         <div>
-            <input />
-            <button  >Save</button>
-        </div>,
-        <select >
-            <option value="mri">MRI</option>
-            <option value="ct">CT</option>
-            <option value="bloodtest">Bloodtest</option>
-        </select>
-    ),
+            <Button variant='contained' color="success"  >Approve</Button>
+            &nbsp;&nbsp;
 
+            <Button variant='contained' color="error"  >Deny</Button>
+        </div>
+
+    ),
+    createData('Ravi', "P1284", "Male", 28, "8/8/2022",
+        <div>
+            <Button variant='contained' color="success"  >Approve</Button>
+            &nbsp;&nbsp;
+
+            <Button variant='contained' color="error"  >Deny</Button>
+        </div>
+    ),
+    createData('Vijay', "P1834", "Male", 42, "6/4/2022",
+        <div>
+            <Button variant='contained' color="success"  >Approve</Button>
+            &nbsp;&nbsp;
+
+            <Button variant='contained' color="error"  >Deny</Button>
+        </div>
+    ),
 ];
 
 const theme = createTheme();
 
 export default function Album() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     return (
         <ThemeProvider theme={theme}>
@@ -78,7 +93,6 @@ export default function Album() {
                     <HealthAndSafetyIcon sx={{ mr: 2 }} />
                     <Typography variant="h6" color="inherit" noWrap>
                         Healthcare Management System
-
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -99,53 +113,42 @@ export default function Album() {
                             color="text.primary"
                             gutterBottom
                         >
-                            Write Description
+                            Respond Request
                         </Typography>
                         <TableContainer component={Paper}>
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                 <TableHead>
                                     <TableRow>
                                         <StyledTableCell>Patient Name</StyledTableCell>
-                                        <StyledTableCell align="left">ID</StyledTableCell>
-
+                                        <StyledTableCell align="left">Patient ID</StyledTableCell>
                                         <StyledTableCell align="left">Gender</StyledTableCell>
                                         <StyledTableCell align="left">Age</StyledTableCell>
-                                        <StyledTableCell align="left">Date</StyledTableCell>
-                                        <StyledTableCell align="left">Description</StyledTableCell>
-                                        <StyledTableCell align="left">Report Request</StyledTableCell>
+                                        <StyledTableCell align="left">Upload Date</StyledTableCell>
+                                        <StyledTableCell align="left">Action</StyledTableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {rows.map((row) => (
                                         <StyledTableRow key={row.name}>
+
                                             <StyledTableCell align="left">{row.name}</StyledTableCell>
                                             <StyledTableCell align="left">{row.id}</StyledTableCell>
                                             <StyledTableCell align="left">{row.gender}</StyledTableCell>
                                             <StyledTableCell align="left">{row.age}</StyledTableCell>
                                             <StyledTableCell align="left">{row.Date}</StyledTableCell>
-                                            <StyledTableCell align="left">{row.Description}</StyledTableCell>
-                                            <StyledTableCell align="left">{row.patientreportrequest}</StyledTableCell>
+                                            <StyledTableCell align="left">{row.action}</StyledTableCell>
                                         </StyledTableRow>
                                     ))}
                                 </TableBody>
                             </Table>
                         </TableContainer>
-
-                        <Button type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }} > Send</Button>
-
-
                     </Container>
                 </Box>
             </main>
             {/* Footer */}
             <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-               
-                <Copyright />
+              
             </Box>
-            {/* End footer */}
         </ThemeProvider>
     );
 }
